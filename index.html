@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>엄마와 함께한 시골집의 2주</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --ink:#213547;
+      --sub:#5a6b8a;
+      --accent:#6aa6ff;
+      --card:#ffffff;
+      --ring:rgba(28,100,242,.15);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Malgun Gothic,sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    header{
+      position: sticky; top:0; z-index: 50;
+      background: linear-gradient(180deg,#e9f2ff,rgba(233,242,255,.8));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e5ecf6;
+    }
+    .wrap{max-width: 1000px; margin: 0 auto; padding: 18px 18px;}
+    .title{
+      margin: 0;
+      font-size: clamp(22px,4.2vw,36px);
+      font-weight: 800;
+      letter-spacing:.2px;
+      color:#1f4fa3;
+    }
+    .sub{margin-top:6px; color: var(--sub); font-size:14px}
+
+    .audiobar{
+      display:flex; align-items:center; gap:10px; margin-top:10px;
+    }
+    .btn{
+      border:1px solid #bcd3ff; background:#fff; color:#1f4fa3;
+      padding:8px 12px; border-radius:10px; font-weight:600;
+      box-shadow: 0 1px 0 #e6eefc;
+      cursor:pointer;
+    }
+
+    main{padding: 24px 18px 56px}
+    .container{max-width: 1000px; margin:0 auto; display:grid; gap:22px}
+    .letter{
+      background: var(--card);
+      border-radius: 16px;
+      padding: clamp(18px,3.5vw,28px);
+      box-shadow: 0 6px 24px rgba(20,50,120,.07);
+      border: 1px solid #e9eef7;
+    }
+    .letter h2{margin:0 0 6px 0; font-size: clamp(18px,3.6vw,22px); color:#1f4fa3}
+    .letter p{margin: 0 0 12px 0}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap: 12px;
+    }
+    .gallery figure{
+      grid-column: span 6;
+      margin:0; background:#fff; border-radius:14px; overflow:hidden;
+      border: 1px solid #e9eef7;
+      box-shadow: 0 4px 16px rgba(20,50,120,.06);
+      transform: translateY(12px); opacity:0;
+      transition: transform .6s ease, opacity .6s ease;
+    }
+    .gallery figure.show{transform: translateY(0); opacity:1}
+    .gallery img{display:block; width:100%; height: 100%; object-fit: cover}
+    .gallery figcaption{padding:10px 12px; color:#55637c; font-size:13px}
+
+    @media (min-width:720px){
+      .gallery figure{grid-column: span 4}
+    }
+    @media (min-width:1024px){
+      .gallery figure{grid-column: span 3}
+    }
+
+    footer{
+      padding:22px 18px 40px; text-align:center; color:#71829f; font-size:13px
+    }
+    /* focus ring */
+    .btn:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1 class="title">엄마와 함께한 시골집의 2주</h1>
+      <p class="sub">가족의 사랑으로 기록한 회복의 시간, 사진과 음악으로 남깁니다.</p>
+
+      <div class="audiobar">
+        <!-- 파일명: bgm.mp3 로 저장해 두세요 -->
+        <audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
+        <button id="toggle" class="btn">배경음악 재생 ▶︎</button>
+        <small style="color:#4a5c7d">※ 일부 모바일에서는 첫 탭 후 재생됩니다.</small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- 편지 영역 -->
+      <section class="letter" aria-label="편지">
+        <h2>편지</h2>
+        <p><strong>엄마와 함께한 시골집의 2주.</strong></p>
+        <p>고관절 수술 후 임시 퇴원하셔서, 익숙한 집에서 회복하실 수 있도록 뉴질랜드에서 막내딸이 날아와 함께 지낸 시간.</p>
+        <p>아침 햇살을 함께 맞고, 하루 세끼를 차리고, 해가 질 무렵에는 손잡고 마당을 걸으며, 지난 세월을 이야기하고, 웃고, 때로는 조용히 눈물짓고…</p>
+        <p>매일매일이 선물 같았어요.</p>
+        <p>다른 형제자매들과도 사진으로 공유하며, 함께 나눈 이 시간은 언젠가 우리 모두의 가슴 속에서 “엄마와의 가장 따뜻했던 계절”로 기억되기를 바랍니다.</p>
+        <p><strong>사랑합니다 엄마.</strong></p>
+      </section>
+
+      <!-- 사진 갤러리 20장 (파일명: photo1.jpg ~ photo20.jpg) -->
+      <section aria-label="사진 갤러리" class="gallery">
+        <!-- 1 ~ 20까지 필요 수만큼 유지/삭제하세요 -->
+        <figure><img src="photo1.jpg" alt="우리의 하루 1"><figcaption>우리의 하루 1</figcaption></figure>
+        <figure><img src="photo2.jpg" alt="우리의 하루 2"><figcaption>우리의 하루 2</figcaption></figure>
+        <figure><img src="photo3.jpg" alt="우리의 하루 3"><figcaption>우리의 하루 3</figcaption></figure>
+        <figure><img src="photo4.jpg" alt="우리의 하루 4"><figcaption>우리의 하루 4</figcaption></figure>
+        <figure><img src="photo5.jpg" alt="우리의 하루 5"><figcaption>우리의 하루 5</figcaption></figure>
+        <figure><img src="photo6.jpg" alt="우리의 하루 6"><figcaption>우리의 하루 6</figcaption></figure>
+        <figure><img src="photo7.jpg" alt="우리의 하루 7"><figcaption>우리의 하루 7</figcaption></figure>
+        <figure><img src="photo8.jpg" alt="우리의 하루 8"><figcaption>우리의 하루 8</figcaption></figure>
+        <figure><img src="photo9.jpg" alt="우리의 하루 9"><figcaption>우리의 하루 9</figcaption></figure>
+        <figure><img src="photo10.jpg" alt="우리의 하루 10"><figcaption>우리의 하루 10</figcaption></figure>
+        <figure><img src="photo11.jpg" alt="우리의 하루 11"><figcaption>우리의 하루 11</figcaption></figure>
+        <figure><img src="photo12.jpg" alt="우리의 하루 12"><figcaption>우리의 하루 12</figcaption></figure>
+        <figure><img src="photo13.jpg" alt="우리의 하루 13"><figcaption>우리의 하루 13</figcaption></figure>
+        <figure><img src="photo14.jpg" alt="우리의 하루 14"><figcaption>우리의 하루 14</figcaption></figure>
+        <figure><img src="photo15.jpg" alt="우리의 하루 15"><figcaption>우리의 하루 15</figcaption></figure>
+        <figure><img src="photo16.jpg" alt="우리의 하루 16"><figcaption>우리의 하루 16</figcaption></figure>
+        <figure><img src="photo17.jpg" alt="우리의 하루 17"><figcaption>우리의 하루 17</figcaption></figure>
+        <figure><img src="photo18.jpg" alt="우리의 하루 18"><figcaption>우리의 하루 18</figcaption></figure>
+        <figure><img src="photo19.jpg" alt="우리의 하루 19"><figcaption>우리의 하루 19</figcaption></figure>
+        <figure><img src="photo20.jpg" alt="우리의 하루 20"><figcaption>우리의 하루 20</figcaption></figure>
+      </section>
+    </div>
+  </main>
+
+  <footer>© 2025 Family Archive • 사랑을 기록하는 작은 페이지</footer>
+
+  <script>
+    // 배경음악 재생/일시정지 토글
+    const audio = document.getElementById('bgm');
+    const btn = document.getElementById('toggle');
+
+    function updateBtn(){
+      btn.textContent = audio.paused ? '배경음악 재생 ▶︎' : '배경음악 일시정지 ❚❚';
+    }
+    btn.addEventListener('click', async () => {
+      try{
+        if (audio.paused){ await audio.play(); } else { audio.pause(); }
+        updateBtn();
+      }catch(e){ console.log(e); }
+    });
+    // iOS 등 첫 상호작용 후 자동재생 보정
+    window.addEventListener('touchend', () => {
+      if (audio.paused) audio.play().then(updateBtn).catch(()=>{});
+    }, {once:true});
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && audio.paused){
+        audio.play().then(updateBtn).catch(()=>{});
+      }
+    });
+
+    // 갤러리 항목 순차 등장
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:.1});
+    document.querySelectorAll('.gallery figure').forEach((card,i)=>{
+      card.style.transitionDelay = (i%6)*0.08 + 's';
+      io.observe(card);
+    });
+  </script>
+</body>
+</html>
+```0
